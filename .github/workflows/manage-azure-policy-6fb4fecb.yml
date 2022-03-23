@@ -1,0 +1,62 @@
+name: manage-azure-policy-6fb4fecb
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/Audit_virtual_machines_without_disaster_recovery_configured_0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56/**'
+#      - 'policies/Vulnerability_assessment_should_be_enabled_on_your_Synapse_workspaces_0049a6b3-a662-4f3e-8635-39cf44ace45a/**'
+#      - 'policies/SQL_Server_Integration_Services_integration_runtimes_on_Azure_Data_Factory_should_be_joined_to_a_virtual_network_0088bc63-6dee-4a9c-9d29-91cfdc848952/**'
+#      - 'policies/Private_endpoint_connections_on_Automation_Accounts_should_be_enabled_0c2b3618-68a8-4034-a150-ff4abc873462/**'
+#      - 'policies/Configure_Azure_Automation_accounts_to_disable_public_network_access_23b36a7c-9d26-4288-a8fd-c1d2fa284d8c/**'
+#      - 'policies/Configure_Azure_Automation_account_to_disable_local_authentication_30d1d58e-8f96-47a5-8564-499a3f3cca81/**'
+#      - 'policies/Automation_account_variables_should_be_encrypted_3657f5a0-770e-44a3-b44e-9431ba1e9735/**'
+#      - 'policies/Azure_Automation_account_should_have_local_authentication_method_disabled_48c5f1cb-14ad-4797-8e3b-f78ab3f8d700/**'
+#      - 'policies/Deploy_Workflow_Automation_for_Azure_Security_Center_regulatory_compliance_509122b9-ddd9-47ba-a5f1-d0dac20be63c/**'
+#      - 'policies/Azure_Automation_accounts_should_use_customer-managed_keys_to_encrypt_data_at_rest_56a5ee18-2ae6-4810-86f7-18e39ce5629b/**'
+#      - 'policies/Configure_Azure_Automation_accounts_with_private_DNS_zones_6dd01e4f-1be1-4e80-9d0b-d109e04cb064/**'
+#      - 'policies/Deploy_Workflow_Automation_for_Azure_Security_Center_recommendations_73d6ab6c-2475-4850-afd6-43795f3492ef/**'
+#      - 'policies/Configure_Log_Analytics_workspace_and_automation_account_to_centralize_logs_and_monitoring_8e3e61b3-0b32-22d5-4edf-55f87fdb5955/**'
+#      - 'policies/Automation_accounts_should_disable_public_network_access_955a914f-bf86-4f0e-acd5-e0766b0efcb6/**'
+#      - 'policies/Configure_private_endpoint_connections_on_Azure_Automation_accounts_c0c3130e-7dda-4187-aed0-ee4a472eaa60/**'
+#      - 'policies/Deploy_Workflow_Automation_for_Azure_Security_Center_alerts_f1525828-9a90-4fcf-be48-268cdd02361e/**'
+#      - .github/workflows/manage-azure-policy-6fb4fecb.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_6fb4fecb}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/Audit_virtual_machines_without_disaster_recovery_configured_0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56/**
+          policies/Vulnerability_assessment_should_be_enabled_on_your_Synapse_workspaces_0049a6b3-a662-4f3e-8635-39cf44ace45a/**
+          policies/SQL_Server_Integration_Services_integration_runtimes_on_Azure_Data_Factory_should_be_joined_to_a_virtual_network_0088bc63-6dee-4a9c-9d29-91cfdc848952/**
+          policies/Private_endpoint_connections_on_Automation_Accounts_should_be_enabled_0c2b3618-68a8-4034-a150-ff4abc873462/**
+          policies/Configure_Azure_Automation_accounts_to_disable_public_network_access_23b36a7c-9d26-4288-a8fd-c1d2fa284d8c/**
+          policies/Configure_Azure_Automation_account_to_disable_local_authentication_30d1d58e-8f96-47a5-8564-499a3f3cca81/**
+          policies/Automation_account_variables_should_be_encrypted_3657f5a0-770e-44a3-b44e-9431ba1e9735/**
+          policies/Azure_Automation_account_should_have_local_authentication_method_disabled_48c5f1cb-14ad-4797-8e3b-f78ab3f8d700/**
+          policies/Deploy_Workflow_Automation_for_Azure_Security_Center_regulatory_compliance_509122b9-ddd9-47ba-a5f1-d0dac20be63c/**
+          policies/Azure_Automation_accounts_should_use_customer-managed_keys_to_encrypt_data_at_rest_56a5ee18-2ae6-4810-86f7-18e39ce5629b/**
+          policies/Configure_Azure_Automation_accounts_with_private_DNS_zones_6dd01e4f-1be1-4e80-9d0b-d109e04cb064/**
+          policies/Deploy_Workflow_Automation_for_Azure_Security_Center_recommendations_73d6ab6c-2475-4850-afd6-43795f3492ef/**
+          policies/Configure_Log_Analytics_workspace_and_automation_account_to_centralize_logs_and_monitoring_8e3e61b3-0b32-22d5-4edf-55f87fdb5955/**
+          policies/Automation_accounts_should_disable_public_network_access_955a914f-bf86-4f0e-acd5-e0766b0efcb6/**
+          policies/Configure_private_endpoint_connections_on_Azure_Automation_accounts_c0c3130e-7dda-4187-aed0-ee4a472eaa60/**
+          policies/Deploy_Workflow_Automation_for_Azure_Security_Center_alerts_f1525828-9a90-4fcf-be48-268cdd02361e/**
